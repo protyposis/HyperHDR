@@ -25,6 +25,10 @@ jobs:
             debian: bullseye
             dockerName: Debian Bullseye (x86_64)
             platform: linux
+          - dockerImage: x86_64
+            linuxVersion: jammy
+            dockerName: Ubuntu 22.04 LTS (x86_64)
+            platform: linux
           - dockerImage: rpi012-armv6l
             debian: bullseye
             dockerName: Debian Bullseye (Raspberry Pi ZERO, 1 & 2)
@@ -71,7 +75,9 @@ jobs:
           USE_CCACHE: ${{ env.USE_CACHE }}
           RESET_CACHE: ${{ env.RESET_CACHE }}
         shell: bash
-        run: ./.ci/ci_build.sh
+        run: |
+          ./.ci/ci_build.sh
+      # sed -i 's/#SET(HYPERHDR_REPO_RPM_BUILD ON)/SET(HYPERHDR_REPO_RPM_BUILD ON)/' ./cmake/packages.cmake
 
       # upload artifacts (only on tagged commit)
       - name: Upload artifacts
