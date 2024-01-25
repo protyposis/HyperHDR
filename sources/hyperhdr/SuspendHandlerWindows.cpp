@@ -93,11 +93,11 @@ bool SuspendHandler::nativeEventFilter(const QByteArray& eventType, void* messag
 		switch (msg->wParam)
 		{			
 			case PBT_APMRESUMESUSPEND:
-				emit SignalHibernate(true);
+				emit SignalHibernate(true, hyperhdr::SystemComponent::SUSPEND);
 				return true;
 				break;
 			case PBT_APMSUSPEND:
-				emit SignalHibernate(false);
+				emit SignalHibernate(false, hyperhdr::SystemComponent::SUSPEND);
 				return true;
 				break;
 		}
@@ -110,7 +110,7 @@ bool SuspendHandler::nativeEventFilter(const QByteArray& eventType, void* messag
 			switch (msg->wParam)
 			{
 			case WTS_SESSION_UNLOCK:
-				emit SignalHibernate(true);
+				emit SignalHibernate(true, hyperhdr::SystemComponent::LOCKER);
 				return true;
 				break;
 
@@ -122,7 +122,7 @@ bool SuspendHandler::nativeEventFilter(const QByteArray& eventType, void* messag
 				}
 				else
 				{
-					emit SignalHibernate(false);
+					emit SignalHibernate(false, hyperhdr::SystemComponent::LOCKER);
 					return true;
 				}
 				break;
