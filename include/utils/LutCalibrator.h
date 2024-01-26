@@ -164,7 +164,7 @@ private:
 	bool	_limitedRange;
 	int		_checksum;
 	int		_currentCoef;
-	double	_coefsResult[3];
+	double	_coefsResult[4];
 	int		_warningCRC;
 	int		_warningMismatch;
 	double	_saturation;
@@ -185,5 +185,5 @@ private:
 
 	// Color coefs YUV to RGB: http://avisynth.nl/index.php/Color_conversions
 	// FCC, Rec.709, Rec.601 coefficients 
-	ColorStat _coefs[3] = { ColorStat(0.3, 0.59, 0.11), ColorStat(0.2126, 0.7152, 0.0722), ColorStat(0.299, 0.587, 0.114)};
+	ColorStat _coefs[4] = { ColorStat(0.3, 0.59, 0.11), ColorStat(0.2126, 0.7152, 0.0722), ColorStat(0.299, 0.587, 0.114), ColorStat(0.2627, 0.678, 0.0593)};
 };

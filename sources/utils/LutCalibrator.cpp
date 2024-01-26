@@ -62,7 +62,7 @@ ColorRgb LutCalibrator::primeColors[] = {
 
 #define LUT_FILE_SIZE 50331648
 #define LUT_INDEX(y,u,v) ((y + (u<<8) + (v<<16))*3)
-#define REC(x) (x == 2) ? "REC.601" : (x == 1) ? "REC.709" : "FCC"
+#define REC(x) (x == 3) ? "REC.2020" : (x == 2) ? "REC.601" : (x == 1) ? "REC.709" : "FCC"
 LutCalibrator* LutCalibrator::instance = nullptr;
 
 
